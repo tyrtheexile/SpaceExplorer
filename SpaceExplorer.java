@@ -1,9 +1,13 @@
-
+import WindowManagment.MakeWindow;
 
 public class SpaceExplorer
 {
 	public static void main(String[] args) {
-		System.out.println("Okay I am getting the hang of this");
-		System.out.println("Still Testing though");
+		MakeWindow newWin = new MakeWindow();
+		newWin.StartWindow();
+		newWin.AddText(10,10);
+		newWin.AddText(1,100);
+		newWin.AddText(67,1);
+		newWin.UpdateWindow();
 	}
 }
