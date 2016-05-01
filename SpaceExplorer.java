@@ -8,6 +8,7 @@ public class SpaceExplorer
 		newWin.AddText(10,10);
 		newWin.AddText(1,100);
 		newWin.AddText(67,1);
+		newWin.AddButton("Testing");
 		newWin.UpdateWindow();
 	}
 }

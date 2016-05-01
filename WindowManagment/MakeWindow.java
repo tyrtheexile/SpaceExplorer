@@ -3,7 +3,7 @@ package WindowManagment;
 import java.awt.*;
 import java.awt.event.*;
 
-public class MakeWindow extends Frame implements ActionListener
+public class MakeWindow<T> extends Frame implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -54,6 +54,20 @@ public class MakeWindow extends Frame implements ActionListener
 		    {
 		        texts[i] = new TextField(""+num,length);
 		        add(texts[i]);
+		        break;
+		    }
+		}
+		
+	}
+	public void AddButton(String name)
+	{
+		for(int i = 0; i < butts.length; i++)
+		{
+		    if(butts[i] == null)
+		    {
+		        butts[i] = new Button(name);
+		        //butts.addActionlistner(n);
+		        add(butts[i]);
 		        break;
 		    }
 		}
