@@ -1,3 +1,4 @@
+import Astronaut.Astronaut;
 import WindowManagment.MakeWindow;
 
 public class SpaceExplorer
