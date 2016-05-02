@@ -12,6 +12,8 @@ public class MakeWindow<T> extends Frame implements ActionListener
 	Button[] butts = new Button[25];
 	TextField[] texts = new TextField[25];
 	
+	T actionClass;
+	
 	//Constructors
 	//No Argument 500-425-New Window
 	//Class Window takes it's properties
@@ -27,6 +29,20 @@ public class MakeWindow<T> extends Frame implements ActionListener
 	public MakeWindow(int height, int width, String title)
 	{
 		newWindow = new Window(height,width,title);
+	}
+	public MakeWindow(T action)
+	{
+		actionClass = action;
+	}
+	
+	//Getters and Setters
+	public void Get_ActionClass(T action)
+	{
+		actionClass = action;
+	}
+	public void Get_Window(Window win)
+	{
+		newWindow=win;
 	}
 	
 	//Creates the Window with Window class parameters may now add the following:
@@ -66,7 +82,7 @@ public class MakeWindow<T> extends Frame implements ActionListener
 		    if(butts[i] == null)
 		    {
 		        butts[i] = new Button(name);
-		        //butts.addActionlistner(n);
+		        //butts[i].addActionListener(actionClass);
 		        add(butts[i]);
 		        break;
 		    }
