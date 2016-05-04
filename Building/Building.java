@@ -38,8 +38,7 @@ public class Building
 }
 
 
-
-public class Platform extends Building
+class Platform extends Building
 {
 	
 	Platform(String Name, int Size, int Wood, int Stone, int Iron)

@@ -2,6 +2,8 @@ package WindowManagment;
 
 import java.awt.*;
 import java.awt.event.*;
+import Main.*;
+import Actions.*;
 
 public class MakeWindow<T> extends Frame implements ActionListener
 {
@@ -75,14 +77,15 @@ public class MakeWindow<T> extends Frame implements ActionListener
 		}
 		
 	}
-	public void AddButton(String name)
+	public void AddButton(String name, ButAction action)
 	{
 		for(int i = 0; i < butts.length; i++)
 		{
 		    if(butts[i] == null)
 		    {
 		        butts[i] = new Button(name);
-		        //butts[i].addActionListener(actionClass);
+		        Global.DebugMSG(5, "\nButton Number "+i+" Created - Name: "+name);
+		        if (action!=null) {butts[i].addActionListener(action);}
 		        add(butts[i]);
 		        break;
 		    }
