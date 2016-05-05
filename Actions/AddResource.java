@@ -10,14 +10,15 @@ public class AddResource implements ButAction {
 	
 	public AddResource(Astronaut astro) {
 		person = astro;
-		Global.DebugMSG(5,"\nAddResource has been Added to " +person.Get_Name());
+		Global.DebugMSG(5,"\nAddResource has been Added to " +person.getName());
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent evt) {
-		person.Add_Air(10);
-		System.out.println(person.Get_Air());
-		Global.DebugMSG(5,"\nInside AddResouce Action for: "+person.Get_Name());
+		person.addAir(10);
+		
+		System.out.println(person.getAir());
+		Global.DebugMSG(5,"\nInside AddResouce Action for: "+person.getName());
 	}
 
 }

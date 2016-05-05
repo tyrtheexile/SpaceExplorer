@@ -64,13 +64,13 @@ public class MakeWindow<T> extends Frame implements ActionListener
 	}
 	
 	//Add texts with the variables
-	public void AddText(int length, int num)
+	public void AddText(int length, T num)
 	{
 		for(int i = 0; i < texts.length; i++)
 		{
 		    if(texts[i] == null)
 		    {
-		        texts[i] = new TextField(""+num,length);
+		        texts[i] = new TextField(""+num.getAir(),length);
 		        add(texts[i]);
 		        break;
 		    }
