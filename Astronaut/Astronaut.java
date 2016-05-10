@@ -9,6 +9,10 @@ public class Astronaut {
 	private int water;
 	private int food;
 	private int hunger;
+	private int airMax;
+	private int waterMax;
+	private int foodMax;
+	private int hungerMax;
 
 	public Astronaut(String name) {
 		setName(name);
@@ -18,8 +22,23 @@ public class Astronaut {
 		this.air = 100;
 		this.water = 100;
 		this.food = 100;
-		this.hunger = 100;
+		this.hunger = 1;
+		this.airMax=100;
+		this.waterMax=100;
+		this.foodMax=100;
+		this.hungerMax=100;
 		Global.DebugMSG(5, "\nAstronaut: "+name+" has been created with default stats");
+	}
+	
+	public void timePulse()
+	{
+		Global.DebugMSG(5, "\nTimePulse for: "+getName());
+		addAir(-3);
+		addWater(-2);
+		addFood(-getHunger());
+		if (getAir()>getAirMax()) setAir(100);
+		if (getWater()>getWaterMax()) setWater(100);
+		if (getFood()>getFoodMax()) setFood(100);
 	}
 	
 	public Boolean isAlive()
@@ -33,7 +52,13 @@ public class Astronaut {
 		}
 	}
 	
-
+	
+	public String getStatusString()
+	{
+		String str;
+		str = "\nStatus of: "+getName()+"\n Air: "+getAir()+"\n Water: "+getWater()+"\n Food: "+getFood()+"\n Hunger: "+getHunger();
+		return str;
+	}
 
 	public String getName() {
 		return name;
@@ -83,6 +108,30 @@ public class Astronaut {
 	}
 	public void addHunger(int hunger){
 		this.hunger+=hunger;
+	}
+	public int getAirMax() {
+		return airMax;
+	}
+	public int getWaterMax() {
+		return waterMax;
+	}
+	public int getFoodMax() {
+		return foodMax;
+	}
+	public int getHungerMax() {
+		return hungerMax;
+	}
+	public void setAirMax(int airMax) {
+		this.airMax = airMax;
+	}
+	public void setWaterMax(int waterMax) {
+		this.waterMax = waterMax;
+	}
+	public void setFoodMax(int foodMax) {
+		this.foodMax = foodMax;
+	}
+	public void setHungerMax(int hungerMax) {
+		this.hungerMax = hungerMax;
 	}
 
 

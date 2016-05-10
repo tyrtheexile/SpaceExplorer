@@ -70,7 +70,8 @@ public class MakeWindow<T> extends Frame implements ActionListener
 		{
 		    if(texts[i] == null)
 		    {
-		        texts[i] = new TextField(""+num.getAir(),length);
+		        //texts[i] = new TextField(""+num.getAir(),length);
+		    	texts[i] = new TextField("Testing",length);
 		        add(texts[i]);
 		        break;
 		    }
