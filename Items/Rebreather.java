@@ -2,6 +2,7 @@ package Items;
 
 import Astronaut.Astronaut;
 import Building.MainBase;
+import Main.Global;
 
 public class Rebreather extends Item {
 
@@ -21,7 +22,8 @@ public class Rebreather extends Item {
 
 	@Override
 	public int aquisitionModifier() {
-		astro.setAirRate(astro.getAir()-2);
+		astro.setAirRate(astro.getAirRate()-2);
+		Global.DebugMSG(5, "\nRebreather Bough - Air Rate is :"+astro.getAirRate());
 		return 0;
 	}
 

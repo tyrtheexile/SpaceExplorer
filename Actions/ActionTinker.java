@@ -3,6 +3,7 @@ package Actions;
 import java.util.ArrayList;
 
 import Astronaut.Astronaut;
+import Astronaut.Choice;
 import Building.MainBase;
 import Items.*;
 import Main.Global;
@@ -17,11 +18,14 @@ public class ActionTinker extends Action {
 		setTime(12);
 		setActionName("Tinker");
 		this.base=base;
+		items=base.getItemArray();
 	}
 
 	@Override
 	public void doAction() {
 		displayMenu();
+		int choice = Choice.getInput();
+		items.get((choice-1)).buyItem();
 	}
 	
 	public void displayMenu() 

@@ -2,7 +2,9 @@ package Building;
 
 import java.util.ArrayList;
 
+import Astronaut.Astronaut;
 import Items.Item;
+import Items.Rebreather;
 import Main.Global;
 
 public class MainBase {
@@ -10,10 +12,12 @@ public class MainBase {
 	private int alloy;
 	private int carbon;
 	private int hydrogen;
-	private ArrayList<Item> items;
+	private ArrayList<Item> items = new ArrayList<Item>();
+	private Astronaut astro;
 	
 		
-	public MainBase() {
+	public MainBase(Astronaut astro) {
+		this.astro=astro;
 		alloy=100;
 		carbon=50;
 		hydrogen=50;
