@@ -30,13 +30,18 @@ public class ActionTinker extends Action {
 		{
 			displayMenu();
 			int choice = Choice.getInput();
-			if (choice==0) break;
-			if (choice>freeItems.size()||choice<0)
+			if (choice==0) {
+				setTime(1);
+				break;
+			}
+			//Error Check if More than 6 Items
+			if (choice>6||choice<0)
 			{
 				Global.TextDisp("\n--------------\nBad Input Number - Try Again\n--------------");
 				Global.DebugMSG(3, "\nNumber Free Items: "+freeItems.size()+" - Number entered: "+choice);
 				continue;
 			}
+			//Buys the Item, if It can't be afforded repeats the loop
 			if (buyItem(freeItems.get((choice-1)))==true)
 				buy = true;
 			else
@@ -52,14 +57,14 @@ public class ActionTinker extends Action {
 		for(Item i:freeItems)
 		{
 			Global.TextDisp((counter++)+". "+i.getName()+" ("+i.getAlloyCost()+","+i.getCarbonCost()+","+i.getHydrogenCost()+")");
+			if (counter>6) break;
 		}
 	}
 	
 	public Boolean buyItem(Item item)
 	{	
-		if (base.validateCost(item.getAlloyCost(), item.getCarbonCost(), item.getHydrogenCost()))
+		if (base.payCost(item.getAlloyCost(), item.getCarbonCost(), item.getHydrogenCost(), item.getEnergyCost()))
 		{
-			base.payCost(item.getAlloyCost(), item.getCarbonCost(), item.getHydrogenCost());
 			item.aquisitionModifier();
 			item.setOwned(true);
 			base.moveItem2Owned(item);

@@ -72,6 +72,29 @@ public class Astronaut {
 		str=str1+str2+str3+str4;
 		return str;
 	}
+	
+	public Boolean payCost(int airCost, int waterCost, int foodCost)
+	{
+		if (airCost>getAir())
+		{
+			Global.TextDisp("\nAir cost too high");
+			return false;
+		}
+		if (waterCost>getWater())
+		{
+			Global.TextDisp("\nWater cost too high");
+			return false;
+		}
+		if (foodCost>getFood())
+		{
+			Global.TextDisp("\nFood cost too high");
+			return false;
+		}
+		air-=airCost;
+		water-=waterCost;
+		food-=foodCost;
+		return true;
+	}
 
 	public String getName() {
 		return name;

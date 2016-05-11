@@ -52,6 +52,11 @@ public class MainBase {
 		if (getCarbon()>getCarbonMax()) setCarbon(getCarbonMax());
 		if (getHydrogen()>getHydrogenMax()) setHydrogen(getHydrogenMax());
 		if (getEnergy()>getEnergyMax()) setEnergy(getEnergyMax());
+		if (getAlloy()<=0) setAlloy(0);
+		if (getCarbon()<=0) setCarbon(0);
+		if (getHydrogen()<=0) setHydrogen(0);
+		if (getEnergy()<=0) setEnergy(0);
+		
 		return true;
 	}
 	
@@ -71,6 +76,7 @@ public class MainBase {
 		addFreeItem(new Rebreather(astro,this));
 		addFreeItem(new WaterTank(astro,this));
 		addFreeItem(new CookTop(astro,this));
+		addFreeItem(new PickAxe(astro,this));
 	}
 	
 	public void moveItem2Owned(Item item)
@@ -79,31 +85,38 @@ public class MainBase {
 		freeItems.remove(item);
 	}
 	
-	public int payCost(int alloyCost, int carbonCost, int hydrogenCost)
-	{
-		alloy-=alloyCost;
-		carbon-=carbonCost;
-		hydrogen-=hydrogenCost;
-		return 0;
-	}
-	
-	public Boolean validateCost(int alloyCost, int carbonCost, int hydrogenCost)
+	public Boolean payCost(int alloyCost, int carbonCost, int hydrogenCost, int energyCost)
 	{
 		if (alloyCost>getAlloy())
 		{
-			Global.DebugMSG(3, "\nAlloy cost too high");
+			Global.TextDisp("\nAlloy cost too high");
 			return false;
 		}
 		if (carbonCost>getCarbon())
 		{
-			Global.DebugMSG(3, "\nCarbon cost too high");
+			Global.TextDisp("\nCarbon cost too high");
 			return false;
 		}
 		if (hydrogenCost>getHydrogen())
 		{
-			Global.DebugMSG(3, "\nHydrogen cost too high");
+			Global.TextDisp("\nHydrogen cost too high");
 			return false;
 		}
+		if (energyCost>getEnergy())
+		{
+			Global.TextDisp("\nEnergy cost too high");
+			return false;
+		}
+		alloy-=alloyCost;
+		carbon-=carbonCost;
+		hydrogen-=hydrogenCost;
+		energy-=energyCost;
+		return true;
+	}
+	
+	public Boolean validateCost(int alloyCost, int carbonCost, int hydrogenCost)
+	{
+		
 		return true;
 	}
 	

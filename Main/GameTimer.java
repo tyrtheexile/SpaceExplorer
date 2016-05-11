@@ -13,14 +13,14 @@ public class GameTimer {
 	
 	private int TurnCount=0;
 	
-	//Initialize the Gameplay loop with a default Astronaut and Base
+	//Initialize the Game-play loop with a default Astronaut and Base
 	public GameTimer(Astronaut astro,MainBase base) 
 	{
 		this.astro=astro;
 		this.base=base;
 	}
 	
-	//Starts the Actual gameplay loop
+	//Starts the Actual game-play loop
 	public void StartGame() 
 	{
 		Choice choice =new Choice(astro,base);

@@ -15,20 +15,23 @@ public class Choice {
 	Action act2=null;
 	Action selectedAct;
 	
+	//Initialize with Astro and Base
 	public Choice(Astronaut astro,MainBase base) {
 		this.astro=astro;
 		this.base=base;
 	}
 	
-	//Asks for and returns a int
+	//Asks for and returns a int - Static Choice Question
 	public static int getInput()
 	{
-		System.out.println("\nWhat is your choice?: ");
+		Global.TextDisp("\nWhat is your choice?: ");
 		int choicenum=inputStream.nextInt();
 
 		return choicenum;
 	}
-		
+	
+	//This is the Main Method of Choice
+	//It uses inter logic in choiceLogic() to make two actions and do the one selected Returns  Wait time
 	public int giveChoice()
 	{
 		int wait=10;
@@ -38,13 +41,13 @@ public class Choice {
 		
 		//Display Choices
 		choiceLogic();
-		//Global.DebugMSG(6, "\nAction 1: "+act1.getActionName()+"\nAction 2: "+act2.getActionName());
 		
-		System.out.println("\nYou may either:");
-		System.out.println("1. "+act1.getActionName()+" ("+act1.getTime()+")");
-		System.out.println("2. "+act2.getActionName()+" ("+act2.getTime()+")");
+		//Print out actions
+		Global.TextDisp("\nYou may either:");
+		Global.TextDisp("1. "+act1.getActionName()+" ("+act1.getTime()+")");
+		Global.TextDisp("2. "+act2.getActionName()+" ("+act2.getTime()+")");
 		
-		//Get Input
+		//Get Input - 1 or 2 Otherwise repeats
 		while (temp==true)
 		{
 			int input=getInput();
@@ -57,19 +60,21 @@ public class Choice {
 				temp=false;
 			}
 			else {
-				System.out.println("\nInvalid Selection");
+				Global.TextDisp("\nInvalid Selection");
 			}
 		}
+		
+		//Do the Action Selected
+		selectedAct.doAction();
 		
 		//Send back input time
 		wait=selectedAct.getTime();
 		
-		selectedAct.doAction();
-		
 		return wait;
 	}
 	
-	//Checks if act1 or act should be set with the given action
+	//Checks if act1 or act2 should be set with the next action
+	//Used within choiceLogic() to improve readability
 	private void setActions(Action act)
 	{
 		//Takes a new Action
@@ -84,6 +89,7 @@ public class Choice {
 			act1=act;
 	}
 	
+	//This is the meat of how the 2 choices are selected, gonna be a cluster****
 	private void choiceLogic()
 	{
 		//Low Air, Air Action

@@ -10,6 +10,7 @@ public abstract class Item {
 	private int alloyCost=0;
 	private int carbonCost=0;
 	private int hydrogenCost=0;
+	private int energyCost=0;
 	protected Astronaut astro;
 	protected MainBase base;
 	protected Boolean owned=false;
@@ -60,6 +61,14 @@ public abstract class Item {
 
 	public void setHydrogenCost(int hydrogenCost) {
 		this.hydrogenCost = hydrogenCost;
+	}
+
+	public int getEnergyCost() {
+		return energyCost;
+	}
+
+	public void setEnergyCost(int energyCost) {
+		this.energyCost = energyCost;
 	}
 
 	public void setOwned(Boolean owned) {

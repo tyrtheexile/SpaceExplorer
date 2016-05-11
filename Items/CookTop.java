@@ -16,9 +16,13 @@ public class CookTop extends Item {
 
 	@Override
 	public int cycleModifier() {
-		Global.DebugMSG(5, "Cooktop takes 1 energy to make 2 Food");
-		base.setEnergy(base.getEnergy()-1);
-		astro.setFood(astro.getFood()+2);
+		if (base.payCost(0, 0, 0, 1))
+		{
+			Global.TextDisp("Cooktop takes 1 energy to make 2 Food");
+			astro.setFood(astro.getFood()+2);
+		}
+		else
+			Global.TextDisp("Can't Afford to Cooktop this turn");
 		return 0;
 	}
 
