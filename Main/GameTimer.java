@@ -2,7 +2,6 @@ package Main;
 
 import Astronaut.*;
 import Building.*;
-import Items.*;
 
 public class GameTimer {
 	
@@ -10,10 +9,11 @@ public class GameTimer {
 	private int actionTimer=10;
 	
 	private Astronaut astro;
-	
 	private MainBase base;
 	
-	//Initialize the Gameplay loop with a default Astronaut
+	private int TurnCount=0;
+	
+	//Initialize the Gameplay loop with a default Astronaut and Base
 	public GameTimer(Astronaut astro,MainBase base) 
 	{
 		this.astro=astro;
@@ -21,16 +21,9 @@ public class GameTimer {
 	}
 	
 	//Starts the Actual gameplay loop
-	/*public void StartGame()
-	{
-		this.StartGame(this.defaultAstro);
-	}*/
 	public void StartGame() 
 	{
 		Choice choice =new Choice(astro,base);
-		
-		//Initliaze Item Array, Polish soon!
-		base.addItem(new Rebreather(astro,base));
 		
 		//Loop endGameHard!=true
 		while (endGameHard!=true)
@@ -43,14 +36,19 @@ public class GameTimer {
 			}
 			
 			//Update Window
+			Global.TextDisp("\n-------------- "+TurnCount+" --------------");
 			Global.TextDisp(astro.getStatusString());
+			Global.TextDisp(base.getStatusString());
+			Global.TextDisp(base.getItemStatusString());
 			
 			//Timer countdown
+			TurnCount++;
 			actionTimer--;
 			Global.DebugMSG(5, "Action Timer Countdown: "+actionTimer);
 			
 			//Reduce given Parameters
 			astro.timePulse();
+			base.timePulse();
 			
 			//Check if astro is alive everyloop
 			if (astro.isAlive()!=true)

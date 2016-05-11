@@ -1,6 +1,5 @@
 package Astronaut;
 
-import Items.*;
 import Main.Global;
 
 public class Astronaut {
@@ -17,7 +16,7 @@ public class Astronaut {
 	private int airRate;
 	private int waterRate;
 	
-	Item[] items = new Item[20];
+	
 
 	public Astronaut(String name) {
 		setName(name);
@@ -44,9 +43,11 @@ public class Astronaut {
 		addAir(-getAirRate());
 		addWater(-getWaterRate());
 		addFood(-getHunger());
-		if (getAir()>getAirMax()) setAir(100);
-		if (getWater()>getWaterMax()) setWater(100);
-		if (getFood()>getFoodMax()) setFood(100);
+		if (getAir()>getAirMax()) setAir(getAirMax());
+		if (getWater()>getWaterMax()) setWater(getWaterMax());
+		if (getFood()>getFoodMax()) setFood(getFoodMax());
+		
+		
 	}
 	
 	public Boolean isAlive()
@@ -63,8 +64,12 @@ public class Astronaut {
 	
 	public String getStatusString()
 	{
-		String str;
-		str = "\nStatus of: "+getName()+"\n Air: "+getAir()+"\n Water: "+getWater()+"\n Food: "+getFood()+"\n Hunger: "+getHunger();
+		String str,str1,str2,str3,str4;
+		str1 = "\nStatus of: "+getName()+"\n Air: "+getAir()+"/"+getAirMax();
+		str2 = "\n Water: "+getWater()+"/"+getWaterMax();
+		str3 = "\n Food: "+getFood()+"/"+getFoodMax();
+		str4 = "\n Hunger: "+getHunger()+"/"+getHungerMax();
+		str=str1+str2+str3+str4;
 		return str;
 	}
 

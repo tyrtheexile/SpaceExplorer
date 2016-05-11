@@ -16,14 +16,14 @@ public class Rebreather extends Item {
 
 	@Override
 	public int cycleModifier() {
-		//None
+		Global.DebugMSG(5, "Rebreather Cycle Called");
 		return 0;
 	}
 
 	@Override
 	public int aquisitionModifier() {
 		astro.setAirRate(astro.getAirRate()-2);
-		Global.DebugMSG(5, "\nRebreather Bough - Air Rate is :"+astro.getAirRate());
+		Global.DebugMSG(5, "\nRebreather Bought - Air Rate is :"+astro.getAirRate());
 		return 0;
 	}
 
