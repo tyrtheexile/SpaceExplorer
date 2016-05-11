@@ -1,5 +1,6 @@
 package Astronaut;
 
+import Items.*;
 import Main.Global;
 
 public class Astronaut {
@@ -13,6 +14,10 @@ public class Astronaut {
 	private int waterMax;
 	private int foodMax;
 	private int hungerMax;
+	private int airRate;
+	private int waterRate;
+	
+	Item[] items = new Item[20];
 
 	public Astronaut(String name) {
 		setName(name);
@@ -27,14 +32,17 @@ public class Astronaut {
 		this.waterMax=100;
 		this.foodMax=100;
 		this.hungerMax=100;
+		this.airRate=3;
+		this.waterRate=2;
+		
 		Global.DebugMSG(5, "\nAstronaut: "+name+" has been created with default stats");
 	}
 	
 	public void timePulse()
 	{
 		Global.DebugMSG(5, "\nTimePulse for: "+getName());
-		addAir(-3);
-		addWater(-2);
+		addAir(-getAirRate());
+		addWater(-getWaterRate());
 		addFood(-getHunger());
 		if (getAir()>getAirMax()) setAir(100);
 		if (getWater()>getWaterMax()) setWater(100);
@@ -132,6 +140,18 @@ public class Astronaut {
 	}
 	public void setHungerMax(int hungerMax) {
 		this.hungerMax = hungerMax;
+	}
+	public int getAirRate() {
+		return airRate;
+	}
+	public int getWaterRate() {
+		return waterRate;
+	}
+	public void setAirRate(int airRate) {
+		this.airRate = airRate;
+	}
+	public void setWaterRate(int waterRate) {
+		this.waterRate = waterRate;
 	}
 
 

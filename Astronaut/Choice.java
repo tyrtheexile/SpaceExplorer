@@ -2,19 +2,22 @@ package Astronaut;
 
 import java.util.Scanner;
 import Actions.*;
+import Building.*;
 import Main.Global;
 
 public class Choice {
 	
 	private Astronaut astro;
+	private MainBase base;
 	public static Scanner inputStream = new Scanner(System.in);
 	
 	Action act1=null;
 	Action act2=null;
 	Action selectedAct;
 	
-	public Choice(Astronaut astro) {
+	public Choice(Astronaut astro,MainBase base) {
 		this.astro=astro;
+		this.base=base;
 	}
 	
 	//Asks for and returns a int
@@ -105,7 +108,7 @@ public class Choice {
 		//Both Actions Still Empty
 		if (act1==null && act2==null)
 		{
-			setActions(new ActionTinker(astro));
+			setActions(new ActionTinker(astro,base));
 			setActions(new ActionWait(astro));
 		}
 		//One Action Still Empty

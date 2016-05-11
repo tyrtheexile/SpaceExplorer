@@ -1,6 +1,7 @@
 package Main;
 
 import Astronaut.Astronaut;
+import Building.MainBase;
 
 
 public class SpaceExplorer
@@ -9,8 +10,9 @@ public class SpaceExplorer
 		Global.Set_Debug(1);
 		
 		Astronaut chris = new Astronaut("Chris");
+		MainBase alpha = new MainBase();
 		
-		GameTimer mainGame = new GameTimer(chris);
+		GameTimer mainGame = new GameTimer(chris,alpha);
 		mainGame.StartGame();
 		
 		

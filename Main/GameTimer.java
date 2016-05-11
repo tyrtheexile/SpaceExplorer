@@ -1,37 +1,43 @@
 package Main;
 
 import Astronaut.*;
+import Building.*;
+import Items.*;
 
 public class GameTimer {
 	
 	private Boolean endGameHard=false;
 	private int actionTimer=10;
 	
-	private Astronaut defaultAstro;
+	private Astronaut astro;
 	
+	private MainBase base;
 	
 	//Initialize the Gameplay loop with a default Astronaut
-	public GameTimer(Astronaut astro) 
+	public GameTimer(Astronaut astro,MainBase base) 
 	{
-		this.defaultAstro=astro;
+		this.astro=astro;
+		this.base=base;
 	}
 	
 	//Starts the Actual gameplay loop
-	public void StartGame()
+	/*public void StartGame()
 	{
 		this.StartGame(this.defaultAstro);
-	}
-	public void StartGame(Astronaut givenastro) 
+	}*/
+	public void StartGame() 
 	{
-		Astronaut astro= givenastro;
-		Choice choice =new Choice(astro);
+		Choice choice =new Choice(astro,base);
+		
+		//Initliaze Item Array, Polish soon!
+		base.addItem(new Rebreather(astro,base));
 		
 		//Loop endGameHard!=true
 		while (endGameHard!=true)
 		{
 			//Pause for 1 second on loop start
 			try {
-			    Thread.sleep(10);
+			    Thread.sleep(1000);
 			} catch(InterruptedException ex) {
 			    Thread.currentThread().interrupt();
 			}
