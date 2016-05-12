@@ -14,6 +14,7 @@ public abstract class Item {
 	protected Astronaut astro;
 	protected MainBase base;
 	protected Boolean owned=false;
+	private String description;
 	
 	public Item(Astronaut astro, MainBase base)
 	{
@@ -73,6 +74,14 @@ public abstract class Item {
 
 	public void setOwned(Boolean owned) {
 		this.owned = owned;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

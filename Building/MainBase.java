@@ -77,6 +77,7 @@ public class MainBase {
 		addFreeItem(new WaterTank(astro,this));
 		addFreeItem(new CookTop(astro,this));
 		addFreeItem(new PickAxe(astro,this));
+		addFreeItem(new MiningBot(astro,this));
 	}
 	
 	public void moveItem2Owned(Item item)
@@ -123,9 +124,14 @@ public class MainBase {
 	public String getItemStatusString()
 	{
 		String str="\nItems in Base: ";
+		if (ownedItems.isEmpty())
+		{
+			str = str + " None";
+			return str;
+		}
 		for (Item i:ownedItems)
 		{
-			str=str+" "+i.getName()+",";
+			str=str+" "+i.getName()+"";
 		}
 		return str;
 	}
