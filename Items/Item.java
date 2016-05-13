@@ -15,6 +15,7 @@ public abstract class Item {
 	protected MainBase base;
 	protected Boolean owned=false;
 	private String description;
+	protected int numberOfThisItem;
 	
 	public Item(Astronaut astro, MainBase base)
 	{

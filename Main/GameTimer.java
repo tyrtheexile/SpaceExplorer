@@ -30,7 +30,7 @@ public class GameTimer {
 		{
 			//Pause for 1 second on loop start
 			try {
-			    Thread.sleep(1000);
+			    Thread.sleep(Global.getTimeIncrement());
 			} catch(InterruptedException ex) {
 			    Thread.currentThread().interrupt();
 			}

@@ -9,6 +9,7 @@ public class Global {
 	// Debug 5 - Verbose Debug
 	// Debug 6 - Verbose Debug Text Mode
 	private static int debug=0;
+	private static int timeIncrement=10;
 	
 	public static void Set_Debug(int i) {debug=i;}
 	public static int Get_Debug() {return debug;}
@@ -16,6 +17,9 @@ public class Global {
 	public static void DebugMSG(int lvl,String str)
 	{
 		if (debug>=lvl) System.out.println(str);
+	}
+	public static int getTimeIncrement() {
+		return timeIncrement;
 	}
 	public static void TextDisp(String str) 
 	{

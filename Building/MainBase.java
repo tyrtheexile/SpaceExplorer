@@ -78,12 +78,21 @@ public class MainBase {
 		addFreeItem(new CookTop(astro,this));
 		addFreeItem(new PickAxe(astro,this));
 		addFreeItem(new MiningBot(astro,this));
+		addFreeItem(new SmallSolarPanel(astro,this));
 	}
 	
 	public void moveItem2Owned(Item item)
 	{
-		ownedItems.add(item);
-		freeItems.remove(item);
+		if(item instanceof MultiItem)
+		{
+			if(ownedItems.contains(item)==false) ownedItems.add(item);
+			((MultiItem) item).add2NumberOfThisItem(1);
+			//freeItems.remove(item);
+		} else {
+			ownedItems.add(item);
+			freeItems.remove(item);
+		}
+			
 	}
 	
 	public Boolean payCost(int alloyCost, int carbonCost, int hydrogenCost, int energyCost)
@@ -123,6 +132,7 @@ public class MainBase {
 	
 	public String getItemStatusString()
 	{
+		int num;
 		String str="\nItems in Base: ";
 		if (ownedItems.isEmpty())
 		{
@@ -131,7 +141,11 @@ public class MainBase {
 		}
 		for (Item i:ownedItems)
 		{
-			str=str+" "+i.getName()+"";
+			if (i instanceof MultiItem)
+				num=((MultiItem) i).getNumberOfThisItem();
+			else
+				num=1;
+			str=str+"\n  -"+num+"- "+i.getName()+"";
 		}
 		return str;
 	}
