@@ -18,6 +18,7 @@ public class Choice {
 	//Initialize with Astro and Base
 	public Choice(Astronaut astro,MainBase base) {
 		this.astro=astro;
+		astro.setChoice(this);
 		this.base=base;
 	}
 	

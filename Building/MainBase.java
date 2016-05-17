@@ -1,7 +1,6 @@
 package Building;
 
 import java.util.ArrayList;
-
 import Astronaut.Astronaut;
 import Items.*;
 import Main.Global;

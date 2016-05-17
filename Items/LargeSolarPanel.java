@@ -28,6 +28,7 @@ public class LargeSolarPanel extends MultiItem {
 	@Override
 	public int aquisitionModifier() {
 		base.getItems().removeFreeItemByName("Small Solar Panel");
+		base.getItems().addFreeItem(new TurboSynthesizer(astro,base));
 		return 0;
 	}
 

@@ -16,9 +16,11 @@ public class ActionSynthesize extends Action {
 	ArrayList<Item> ownedItems;
 	ArrayList<Item> buyableItems;
 	
+	private static int newTime=12;
+	
 	public ActionSynthesize(Astronaut astro, MainBase base) {
 		super(astro);
-		setTime(12);
+		setTime(newTime);
 		setActionName("Synthesize");
 		this.base=base;
 		freeItems=base.getItems().getFreeItemArray();
@@ -108,5 +110,13 @@ public class ActionSynthesize extends Action {
 		buyable=temp;
 		Global.DebugMSG(6, "Buyable Item List is: "+buyable);
 		return buyable;
+	}
+
+	public static int getNewTime() {
+		return newTime;
+	}
+
+	public static void setNewTime(int newTime) {
+		ActionSynthesize.newTime = newTime;
 	}
 }

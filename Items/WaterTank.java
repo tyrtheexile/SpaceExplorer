@@ -23,6 +23,7 @@ public class WaterTank extends Item {
 	public int aquisitionModifier() {
 		astro.setWaterMax(astro.getWaterMax()+75);
 		Global.DebugMSG(5, "\nWater Tank Bought - Water Max is :"+astro.getWaterMax());
+		base.getItems().addFreeItem(new WaterPump(astro,base));
 		return 0;
 	}
 

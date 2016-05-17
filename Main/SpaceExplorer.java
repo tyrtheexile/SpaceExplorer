@@ -8,8 +8,8 @@ public class SpaceExplorer
 {
 	public static void main(String[] args) {
 		Global.set_Debug(1);
-		Global.setImmortal(true);
-		Global.setTimeIncrement(10);
+		Global.setImmortal(false);
+		Global.setTimeIncrement(1000);
 		
 		Astronaut chris = new Astronaut("Chris");
 		MainBase alpha = new MainBase("Alpha",chris);

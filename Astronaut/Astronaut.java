@@ -15,9 +15,8 @@ public class Astronaut {
 	private int hungerMax;
 	private int airRate;
 	private int waterRate;
+	private Choice choice;
 	
-	
-
 	public Astronaut(String name) {
 		setName(name);
 		createAstronaut();
@@ -180,6 +179,12 @@ public class Astronaut {
 	}
 	public void setWaterRate(int waterRate) {
 		this.waterRate = waterRate;
+	}
+	public Choice getChoice() {
+		return choice;
+	}
+	public void setChoice(Choice choice) {
+		this.choice = choice;
 	}
 
 

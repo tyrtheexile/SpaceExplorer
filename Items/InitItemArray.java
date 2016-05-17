@@ -31,13 +31,15 @@ public class InitItemArray {
  * 
  * 	 Survival: Cooktop, WaterTank
  * 
- * 	 Tier 1: Small Solar Panel(m), Pickaxe
+ * 	 Tier 1: Small Solar Panel(m), Pickaxe, Water Pump
  *   
  *   Tier 2: Medium Solar Panel(m)
  *   
  *   Tier 3: Large Solar Panel(m)
  *   
- *   Tier 5: Mining Bot(m)
+ *   Tier 4: Turbo Synthesizer
+ *   
+ *   Tier 5: Fabricator, Mining Bot(m)
  * 
  * 
  * 
@@ -49,6 +51,9 @@ public class InitItemArray {
  *  							Medium Solar Panel > Large Solar Panel
  *  														<Small Solar Panel
  * 
+ *  Large Solar Panel > Turbo Synthesizer
+ *  
+ *  Turbo Synthesizer > Fabricator
  * 
  * 
  * 
