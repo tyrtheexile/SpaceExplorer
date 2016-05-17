@@ -114,7 +114,7 @@ public class Choice {
 		//Both Actions Still Empty
 		if (act1==null && act2==null)
 		{
-			setActions(new ActionTinker(astro,base));
+			setActions(new ActionSynthesize(astro,base));
 			setActions(new ActionWait(astro));
 		}
 		//One Action Still Empty

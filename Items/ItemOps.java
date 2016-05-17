@@ -94,6 +94,11 @@ public class ItemOps {
 		}
 	}
 	
+	public void removeFreeItemByName(String name)
+	{
+		removeFreeItem(findFreeItemByName(name));
+	}
+	
 	public void addOwnedItem(Item item)
 	{
 		getOwnedItems().add(item);

@@ -7,6 +7,7 @@ public abstract class Item {
 	
 	private String name;
 	private int ID;
+	private static int IDcount=0;
 	private int alloyCost=0;
 	private int carbonCost=0;
 	private int hydrogenCost=0;
@@ -16,11 +17,14 @@ public abstract class Item {
 	protected Boolean owned=false;
 	private String description;
 	protected int numberOfThisItem;
+	protected String color;
 	
 	public Item(Astronaut astro, MainBase base)
 	{
 		this.astro=astro;
 		this.base=base;
+		color="Gray";
+		ID=IDcount++;
 	}
 	
 	public abstract int cycleModifier();
@@ -37,9 +41,6 @@ public abstract class Item {
 	}
 	public void setName(String namee) {
 		this.name = namee;
-	}
-	public void setID(int iD) {
-		ID = iD;
 	}
 	public void setAlloyCost(int cost) {
 		this.alloyCost = cost;

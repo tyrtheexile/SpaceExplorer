@@ -9,17 +9,17 @@ import Building.MainBase;
 import Items.*;
 import Main.Global;
 
-public class ActionTinker extends Action {
+public class ActionSynthesize extends Action {
 	
 	MainBase base;
 	ArrayList<Item> freeItems;
 	ArrayList<Item> ownedItems;
 	ArrayList<Item> buyableItems;
 	
-	public ActionTinker(Astronaut astro, MainBase base) {
+	public ActionSynthesize(Astronaut astro, MainBase base) {
 		super(astro);
 		setTime(12);
-		setActionName("Tinker");
+		setActionName("Synthesize");
 		this.base=base;
 		freeItems=base.getItems().getFreeItemArray();
 		ownedItems=base.getItems().getOwnedItemArray();

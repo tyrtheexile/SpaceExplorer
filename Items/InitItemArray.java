@@ -14,6 +14,7 @@ public class InitItemArray {
 	{
 		ArrayList<Item> freeItems=new ArrayList<Item>();
 		freeItems.add(new Rebreather(astro,base));
+		freeItems.add(new LifeSupport(astro,base));
 		freeItems.add(new WaterTank(astro,base));
 		freeItems.add(new CookTop(astro,base));
 		freeItems.add(new PickAxe(astro,base));
@@ -25,3 +26,30 @@ public class InitItemArray {
 	}
 
 }
+
+/*   Essential: Rebreather, LifeSupport
+ * 
+ * 	 Survival: Cooktop, WaterTank
+ * 
+ * 	 Tier 1: Small Solar Panel(m), Pickaxe
+ *   
+ *   Tier 2: Medium Solar Panel(m)
+ *   
+ *   Tier 3: Large Solar Panel(m)
+ *   
+ *   Tier 5: Mining Bot(m)
+ * 
+ * 
+ * 
+ *  LifeSupport>Cargo Bin
+ *  
+ *  Water Tank>Water Pump
+ *  
+ *  Small Solar Panel > Medium Solar Panel
+ *  							Medium Solar Panel > Large Solar Panel
+ *  														<Small Solar Panel
+ * 
+ * 
+ * 
+ * 
+ */

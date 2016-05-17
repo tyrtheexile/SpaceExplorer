@@ -27,7 +27,7 @@ public class LargeSolarPanel extends MultiItem {
 
 	@Override
 	public int aquisitionModifier() {
-		base.getItems().removeFreeItem(base.getItems().findFreeItemByName("Small Solar Panel"));
+		base.getItems().removeFreeItemByName("Small Solar Panel");
 		return 0;
 	}
 
