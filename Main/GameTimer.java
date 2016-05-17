@@ -39,7 +39,7 @@ public class GameTimer {
 			Global.TextDisp("\n-------------- "+TurnCount+" --------------");
 			Global.TextDisp(astro.getStatusString());
 			Global.TextDisp(base.getStatusString());
-			Global.TextDisp(base.getItemStatusString());
+			Global.TextDisp(base.getItems().getItemStatusString());
 			
 			//Timer countdown
 			TurnCount++;

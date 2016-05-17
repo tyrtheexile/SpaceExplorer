@@ -21,8 +21,8 @@ public class ActionTinker extends Action {
 		setTime(12);
 		setActionName("Tinker");
 		this.base=base;
-		freeItems=base.getFreeItemArray();
-		ownedItems=base.getOwnedItemArray();
+		freeItems=base.getItems().getFreeItemArray();
+		ownedItems=base.getItems().getOwnedItemArray();
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class ActionTinker extends Action {
 		{
 			item.aquisitionModifier();
 			item.setOwned(true);
-			base.moveItem2Owned(item);
+			base.getItems().moveItem2Owned(item);
 			return true;
 		}
 		return false;
