@@ -79,6 +79,7 @@ public class MainBase {
 		addFreeItem(new PickAxe(astro,this));
 		addFreeItem(new MiningBot(astro,this));
 		addFreeItem(new SmallSolarPanel(astro,this));
+		addFreeItem(new MediumSolarPanel(astro,this));
 	}
 	
 	public void moveItem2Owned(Item item)

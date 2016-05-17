@@ -15,8 +15,13 @@ public class SmallSolarPanel extends MultiItem {
 
 	@Override
 	public int cycleModifierOnce() {
-		Global.TextDisp("Solar Panel Gathers 1 Energy");
-		base.setEnergy(base.getEnergy()+1);
+		return 0;
+	}
+
+	@Override
+	public int cycleMulti() {
+		Global.TextDisp(numberOfThisItem+" Small Solar Panels gather "+numberOfThisItem+" Energy");
+		base.setEnergy(base.getEnergy()+numberOfThisItem);
 		return 0;
 	}
 

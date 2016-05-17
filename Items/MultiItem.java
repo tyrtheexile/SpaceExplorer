@@ -5,7 +5,7 @@ import Building.MainBase;
 
 public abstract class MultiItem extends Item {
 
-	private int numberOfThisItem;
+	protected int numberOfThisItem;
 	
 	public MultiItem(Astronaut astro, MainBase base) {
 		super(astro, base);
@@ -15,6 +15,12 @@ public abstract class MultiItem extends Item {
 
 	@Override
 	public int cycleModifier() {
+		
+		//Call the MultiItem method used with numberofthisitem
+		
+		cycleMulti();
+		
+		//Call the method for each item once if needed
 		for (int i=0;i<numberOfThisItem;i++)
 		{
 			cycleModifierOnce();
@@ -37,5 +43,7 @@ public abstract class MultiItem extends Item {
 	public void add2NumberOfThisItem(int num) {
 		this.numberOfThisItem +=num;
 	}
+	
+	public abstract int cycleMulti();
 
 }

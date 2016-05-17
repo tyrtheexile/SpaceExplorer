@@ -51,6 +51,9 @@ public class ActionTinker extends Action {
 	
 	public void displayMenu() 
 	{
+		
+		
+		//Display each item in the buy-able array
 		Global.TextDisp("\nYou Can Build:  (Alloy,Carbon,Hydrogen)");
 		Global.TextDisp("0. Cancel");
 		int counter=1;
