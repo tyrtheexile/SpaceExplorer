@@ -29,10 +29,7 @@ public abstract class MultiItem extends Item {
 	}
 
 	@Override
-	public int aquisitionModifier() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public abstract int aquisitionModifier();
 	
 	public abstract int cycleModifierOnce();
 

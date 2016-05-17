@@ -7,7 +7,9 @@ import Building.MainBase;
 public class SpaceExplorer
 {
 	public static void main(String[] args) {
-		Global.Set_Debug(1);
+		Global.set_Debug(6);
+		Global.setImmortal(true);
+		Global.setTimeIncrement(10);
 		
 		Astronaut chris = new Astronaut("Chris");
 		MainBase alpha = new MainBase("Alpha",chris);

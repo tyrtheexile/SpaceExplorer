@@ -9,10 +9,11 @@ public class Global {
 	// Debug 5 - Verbose Debug
 	// Debug 6 - Verbose Debug Text Mode
 	private static int debug=0;
-	private static int timeIncrement=10;
+	private static int timeIncrement=1000;
+	private static boolean immortal=false;
 	
-	public static void Set_Debug(int i) {debug=i;}
-	public static int Get_Debug() {return debug;}
+	public static void set_Debug(int i) {debug=i;}
+	public static int get_Debug() {return debug;}
 	
 	public static void DebugMSG(int lvl,String str)
 	{
@@ -21,10 +22,15 @@ public class Global {
 	public static int getTimeIncrement() {
 		return timeIncrement;
 	}
+	public static void setTimeIncrement(int i) {
+		timeIncrement = i;
+	}
 	public static void TextDisp(String str) 
 	{
 		if (debug==1 || debug==6)
 			System.out.println("\n"+str);
 	}
-
+	
+	public static void setImmortal(Boolean i) {immortal=i;}
+	public static Boolean getImmortal() {return immortal;}
 }

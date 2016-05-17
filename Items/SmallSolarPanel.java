@@ -25,4 +25,10 @@ public class SmallSolarPanel extends MultiItem {
 		return 0;
 	}
 
+	@Override
+	public int aquisitionModifier() {
+		base.addFreeItem(new MediumSolarPanel(astro,base));
+		return 0;
+	}
+
 }

@@ -25,7 +25,7 @@ public class MainBase {
 	public MainBase(String name,Astronaut astro) {
 		this.astro=astro;
 		this.name=name;
-		alloy=100;
+		alloy=200;
 		carbon=50;
 		hydrogen=50;
 		energy=1000;
@@ -79,7 +79,7 @@ public class MainBase {
 		addFreeItem(new PickAxe(astro,this));
 		addFreeItem(new MiningBot(astro,this));
 		addFreeItem(new SmallSolarPanel(astro,this));
-		addFreeItem(new MediumSolarPanel(astro,this));
+		//addFreeItem(new MediumSolarPanel(astro,this));
 	}
 	
 	public void moveItem2Owned(Item item)
@@ -150,10 +150,47 @@ public class MainBase {
 		}
 		return str;
 	}
+	
+	public int findFreeItemByName(String name)
+	{
+		for (int i=0;i<freeItems.size();i++)
+		{
+			if (name==freeItems.get(i).getName())
+			{
+				return i;
+			}
+		}
+		
+		Global.DebugMSG(6, "Cannot Find Item in FreeItems");
+		return -1;
+	}
 
 	public void addFreeItem(Item item)
+	{	
+		Boolean flag=false;
+		for (Item i:freeItems)
+		{
+			if (i.getName()!=item.getName()){
+				continue;
+			}else {
+				Global.DebugMSG(6, "freeItems already contains" +item.getName());
+				flag=true;
+			}
+		}
+		if (flag==false)
+		{
+			freeItems.add(item);
+		}
+	}
+	
+	public void removeFreeItem(int num)
 	{
-		freeItems.add(item);
+		if (num>0)
+		{
+		freeItems.remove(num);
+		} else {
+			Global.DebugMSG(6, "Cannot remove item with index -1");
+		}
 	}
 	
 	public void addOwnedItem(Item item)

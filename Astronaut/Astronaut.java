@@ -52,7 +52,7 @@ public class Astronaut {
 	
 	public Boolean isAlive()
 	{
-		if (air<=0 || water <=0 || food<=0)
+		if ((air<=0 || water <=0 || food<=0) && Global.getImmortal()==false)
 		{
 			System.out.println("\nAstronaut " +this.name+ " is dead. Game Over");
 			return false;
