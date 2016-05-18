@@ -17,7 +17,8 @@ public class MainBase {
 	private int energy;
 	private int energyMax;
 	private Astronaut astro;
-	private ItemOps Items;
+	private ItemOps items;
+	private BuildGrid grid;
 	
 		
 	public MainBase(String name,Astronaut astro) {
@@ -31,17 +32,19 @@ public class MainBase {
 		carbonMax=500;
 		hydrogenMax=500;
 		energyMax=5000;
-		Items = new ItemOps(astro,this);
-		
+		items = new ItemOps(astro,this);
+		grid = new BuildGrid(astro,this,20);
 	}
 	
 	public Boolean timePulse() 
 	{
 		Global.DebugMSG(5, "Time Pulse for: "+getName());
-		for (Item item:Items.getOwnedItems())
+		for (Item item:items.getOwnedItems())
 		{
 			item.cycleModifier();
 		}
+		
+		grid.cycleBuildings();
 		
 		//Something about Structure Energy Drain
 		
@@ -178,11 +181,11 @@ public class MainBase {
 	}
 
 	public ItemOps getItems() {
-		return Items;
+		return items;
 	}
 
 	public void setItems(ItemOps items) {
-		Items = items;
+		items = items;
 	}
 
 }
