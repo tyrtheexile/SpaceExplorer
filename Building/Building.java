@@ -4,8 +4,8 @@ import Astronaut.Astronaut;
 
 public abstract class Building {
 	
-	private Astronaut astro;
-	private MainBase base;
+	protected Astronaut astro;
+	protected MainBase base;
 	private Boolean NConnExists;
 	private Boolean SConnExists;
 	private Boolean EConnExists;
@@ -14,6 +14,7 @@ public abstract class Building {
 	private Building SConnection=null;
 	private Building EConnection=null;
 	private Building WConnection=null;
+	private char indicator='X';
 	
 	public Building(Astronaut astro, MainBase base) {
 		this.astro=astro;
@@ -110,6 +111,14 @@ public abstract class Building {
 
 	public void setWConnection(Building wConnection) {
 		WConnection = wConnection;
+	}
+
+	public char getIndicator() {
+		return indicator;
+	}
+
+	public void setIndicator(char indicator) {
+		this.indicator = indicator;
 	}
 
 }

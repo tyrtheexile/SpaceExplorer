@@ -44,5 +44,36 @@ public class BuildGrid {
 		buildings[mid][mid]=new BaseHub(astro,base);
 		Global.DebugMSG(3, "Base hub Placed at: "+mid+","+mid);
 	}
+	
+	public void drawBaseMap()
+	{
+		Global.TextDisp("Base Map:");
+		Global.TextDisp("-------------------------------");
+		char letter='a';
+		String str=(letter++)+" ";
+		String linestr="  ";
+		String toplin="  ";
+		for(int i=1;i<=buildings[0].length;i++)
+		{
+			toplin=toplin+i+"|";
+		}
+		Global.TextDisp(toplin);
+		for(Building[] i:buildings)
+		{
+			for(Building j:i)
+			{
+				if (j==null)
+					{str=str+"-";}
+				else
+					{str=str+j.getIndicator();}
+				linestr=linestr+"--";
+				str=str+"|";
+			}
+			Global.TextDisp(str);
+			Global.TextDisp(linestr);
+			str=(letter++)+" ";
+			linestr="  ";
+		}
+	}
 
 }

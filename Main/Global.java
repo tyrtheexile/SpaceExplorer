@@ -11,6 +11,7 @@ public class Global {
 	private static int debug=0;
 	private static int timeIncrement=1000;
 	private static boolean immortal=false;
+	private static int basesize=20;
 	
 	public static void set_Debug(int i) {debug=i;}
 	public static int get_Debug() {return debug;}
@@ -33,4 +34,10 @@ public class Global {
 	
 	public static void setImmortal(Boolean i) {immortal=i;}
 	public static Boolean getImmortal() {return immortal;}
+	public static int getBasesize() {
+		return basesize;
+	}
+	public static void setBasesize(int basesize) {
+		Global.basesize = basesize;
+	}
 }

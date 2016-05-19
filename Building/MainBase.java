@@ -33,7 +33,7 @@ public class MainBase {
 		hydrogenMax=500;
 		energyMax=5000;
 		items = new ItemOps(astro,this);
-		grid = new BuildGrid(astro,this,20);
+		grid = new BuildGrid(astro,this,Global.getBasesize());
 	}
 	
 	public Boolean timePulse() 
@@ -185,7 +185,15 @@ public class MainBase {
 	}
 
 	public void setItems(ItemOps items) {
-		items = items;
+		this.items = items;
+	}
+
+	public BuildGrid getGrid() {
+		return grid;
+	}
+
+	public void setGrid(BuildGrid grid) {
+		this.grid = grid;
 	}
 
 }
