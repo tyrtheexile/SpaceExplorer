@@ -1,11 +1,37 @@
 package Building;
 
 import Astronaut.Astronaut;
+import Main.Global;
+
+/*Building 
+ * 
+ * Must Contain:
+ * 		Name
+ * 		Description
+ * 		Indicator
+ * 		AlloyCost
+ * 		HydrogenCost
+ * 		CarbonCost
+ * 
+ * 
+ */
+
 
 public abstract class Building {
 	
 	protected Astronaut astro;
 	protected MainBase base;
+	
+	protected int xPos;
+	protected int yPos;
+	
+	private String name="Empty";
+	private String description;
+	private int alloyCost=0;
+	private int hydrogenCost=0;
+	private int carbonCost=0;
+	private int energyCost=0;
+	
 	private Boolean NConnExists;
 	private Boolean SConnExists;
 	private Boolean EConnExists;
@@ -21,15 +47,22 @@ public abstract class Building {
 		this.base=base;
 	}
 	
-	public Building(Astronaut astro, MainBase base,String dir, Building build) {
-		this.astro=astro;
-		this.base=base;
-		if (dir=="N") {NConnection=build;}
-		if (dir=="S") {SConnection=build;}
-		if (dir=="E") {EConnection=build;}
-		if (dir=="W") {WConnection=build;}
+	public Boolean setPosition(int xPos,int yPos)
+	{
+		
+		if (base.getGrid().getBuildings()[xPos][yPos]==null)
+		{
+			base.getGrid().getBuildings()[xPos][yPos]=this;
+			this.xPos=xPos;
+			this.yPos=yPos;
+			return true;
+		}else{
+			Global.DebugMSG(3, "Buildings array is occupied at build position for "+this.getName()+" Position: "+xPos+","+yPos);
+			return false;
+		}
 	}
 	
+	//Used during Building construction to set NSEW connections and true/false
 	protected void setConnections(Boolean north,Boolean south, Boolean east, Boolean west)
 	{
 		this.NConnExists=north;
@@ -38,13 +71,36 @@ public abstract class Building {
 		this.WConnExists=west;
 	}
 	
+	//Checks if there a connection of the opposite side given
+	//Used during construction before building is placed to see if it has a connection in the right zone
+	public Boolean oppositeConnectionAvaliable(String oppositeSide)
+	{
+		if (oppositeSide=="N" && this.SConnExists==true) {return true;}
+		if (oppositeSide=="S" && this.NConnExists==true) {return true;}
+		if (oppositeSide=="E" && this.WConnExists==true) {return true;}
+		if (oppositeSide=="W" && this.EConnExists==true) {return true;}
+		return false;
+	}
+	
+	//Checks if the side of the given building is empty, a connection exists and that the edge isn't there
 	public Boolean isSideEmpty(String dir)
 	{
-		if (dir=="N" && NConnExists==true && NConnection==null) {return true;}
-		if (dir=="S" && SConnExists==true && SConnection==null) {return true;}
-		if (dir=="E" && EConnExists==true && EConnection==null) {return true;}
-		if (dir=="W" && WConnExists==true && WConnection==null) {return true;}
+		int topSide=0;
+		int botSide=base.getGrid().getSize();
+		int estSide=base.getGrid().getSize();
+		int wstSide=0;
+		//Global.TextDisp(this.getPosition()[1]+"------------------------------------");
+		if (dir=="N" && NConnExists==true && NConnection==null && this.getPosition()[1]>topSide) {return true;}
+		if (dir=="S" && SConnExists==true && SConnection==null && this.getPosition()[1]<botSide) {return true;}
+		if (dir=="E" && EConnExists==true && EConnection==null && this.getPosition()[0]<estSide) {return true;}
+		if (dir=="W" && WConnExists==true && WConnection==null && this.getPosition()[0]>wstSide) {return true;}
 		return false;
+	}
+	
+	public int[] getPosition()
+	{
+		int[] tmp={xPos,yPos};
+		return tmp;
 	}
 	
 	public abstract int cycleModifier();
@@ -109,6 +165,14 @@ public abstract class Building {
 		EConnection = eConnection;
 	}
 
+	public int getEnergyCost() {
+		return energyCost;
+	}
+
+	public void setEnergyCost(int energyCost) {
+		this.energyCost = energyCost;
+	}
+
 	public void setWConnection(Building wConnection) {
 		WConnection = wConnection;
 	}
@@ -119,6 +183,46 @@ public abstract class Building {
 
 	public void setIndicator(char indicator) {
 		this.indicator = indicator;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public int getAlloyCost() {
+		return alloyCost;
+	}
+
+	public int getHydrogenCost() {
+		return hydrogenCost;
+	}
+
+	public int getCarbonCost() {
+		return carbonCost;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setAlloyCost(int alloyCost) {
+		this.alloyCost = alloyCost;
+	}
+
+	public void setHydrogenCost(int hydrogenCost) {
+		this.hydrogenCost = hydrogenCost;
+	}
+
+	public void setCarbonCost(int carbonCost) {
+		this.carbonCost = carbonCost;
 	}
 
 }

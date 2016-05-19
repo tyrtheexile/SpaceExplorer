@@ -17,15 +17,36 @@ public class BuildGrid {
 		placeBaseHub();
 	}
 	
-	public int constructBuilding(Building newBuilding, Building oldBuilding, String side)
+	public Boolean constructBuilding(Building newBuilding, Building oldBuilding, String side)
 	{
-		if(!oldBuilding.isSideEmpty(side)) {return 0;}
-		
-		
-		return 1;
+		if(!oldBuilding.isSideEmpty(side)) 
+		{
+			Global.DebugMSG(3, "Side: "+side+" of Building: "+oldBuilding.getName()+" is full");
+			return false;
+		}
+		if(!newBuilding.oppositeConnectionAvaliable(side))
+		{
+			Global.DebugMSG(3, "No Connection on the side for: "+newBuilding.getName());
+		}
+		if(base.payCost(newBuilding.getAlloyCost(), newBuilding.getCarbonCost(), newBuilding.getHydrogenCost(), newBuilding.getEnergyCost()))
+		{
+			int oldX=oldBuilding.getPosition()[0];
+			int oldY=oldBuilding.getPosition()[1];
+			int xPos=0;
+			int yPos=0;
+			
+			if(side=="N"||side=="n"){xPos=oldX; yPos=oldY-1;}
+			if(side=="S"||side=="s"){xPos=oldX; yPos=oldY+1;}
+			if(side=="E"||side=="e"){xPos=oldX+1; yPos=oldY;}
+			if(side=="W"||side=="w"){xPos=oldX-1; yPos=oldY;}
+			
+			newBuilding.setPosition(xPos, yPos);
+			Global.DebugMSG(3, "Building: "+newBuilding.getName()+" constructed, at:"+newBuilding.getPosition());
+			return true;
+		} else
+			return false;
 	}
 	
-
 	public void cycleBuildings()
 	{
 		for(Building[] i:buildings)
@@ -41,7 +62,9 @@ public class BuildGrid {
 	private void placeBaseHub()
 	{
 		int mid=size/2;
-		buildings[mid][mid]=new BaseHub(astro,base);
+		//buildings[mid][mid]=new BaseHub(astro,base);
+		Building hub = new BaseHub(astro,base,mid,mid);
+		buildings[mid][mid]=hub;
 		Global.DebugMSG(3, "Base hub Placed at: "+mid+","+mid);
 	}
 	
@@ -53,9 +76,21 @@ public class BuildGrid {
 		String str=(letter++)+" ";
 		String linestr="  ";
 		String toplin="  ";
+		if (buildings[0].length>9)
+		{
+			for (int i=1;i<=buildings[0].length;i++)
+			{
+				if (i<=9)
+					toplin=toplin+"  ";
+				else
+					toplin=toplin+(i/10)+" ";
+			}
+		}
+		Global.TextDisp(toplin);
+		toplin="  ";
 		for(int i=1;i<=buildings[0].length;i++)
 		{
-			toplin=toplin+i+"|";
+			toplin=toplin+(i%10)+"|";
 		}
 		Global.TextDisp(toplin);
 		for(Building[] i:buildings)
@@ -76,4 +111,19 @@ public class BuildGrid {
 		}
 	}
 
+	public int getSize() {
+		return size;
+	}
+
+	public Building getBuilding(int x,int y)
+	{
+		if (buildings[x-1][y-1]!=null)
+			return buildings[x-1][y-1];
+		else
+			return null;
+	}
+	
+	public Building[][] getBuildings() {
+		return buildings;
+	}
 }

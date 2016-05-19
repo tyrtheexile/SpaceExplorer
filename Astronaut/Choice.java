@@ -81,10 +81,14 @@ public class Choice {
 		//Takes a new Action
 		if (act1!=null) 			//If Action1 is full
 		{
-			if(act2!=null)			//If Action2 is Also Full
-				Global.DebugMSG(5, "\nToo many Actions- Failed to add: "+act.getActionName());
-			else					//Otherwise
-				act2=act;   		//Give Act to Action2
+			//Check for Duplicate Action on Act1
+			if (act1.getActionName()!=act.getActionName())
+			{
+				if(act2!=null)			//If Action2 is Also Full
+					Global.DebugMSG(6, "\nToo many Actions- Failed to add: "+act.getActionName());
+				else					//Otherwise
+					act2=act;   		//Give Act to Action2
+			}
 		}
 		else 						//
 			act1=act;
@@ -122,6 +126,7 @@ public class Choice {
 		if (act1==null || act2==null)
 		{
 			setActions(new ActionAddAir(astro));
+			setActions(new ActionBuild(astro,base));
 		}
 	}
 }
