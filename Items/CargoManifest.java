@@ -28,7 +28,7 @@ public class CargoManifest extends Item {
 			Global.TextDisp("Found 2 Hydrogen in the Cargo Manifest");
 			base.setHydrogen(base.getHydrogen()+2);
 		}
-		if (x>=10 && x<15)
+		if (x>=10 && x<30)
 		{
 			Global.TextDisp("Found 2 Alloy in the Cargo Manifest");
 			base.setAlloy(base.getAlloy()+2);
@@ -38,7 +38,8 @@ public class CargoManifest extends Item {
 
 	@Override
 	public int aquisitionModifier() {
-		// TODO Auto-generated method stub
+		base.getItems().addFreeItem(new SmallSolarPanel(astro,base));
+		base.getItems().addFreeItem(new PickAxe(astro,base));
 		return 0;
 	}
 

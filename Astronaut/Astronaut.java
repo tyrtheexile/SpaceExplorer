@@ -16,6 +16,7 @@ public class Astronaut {
 	private int airRate;
 	private int waterRate;
 	private Choice choice;
+	private HistoricalData changeData;
 	
 	public Astronaut(String name) {
 		setName(name);
@@ -32,7 +33,7 @@ public class Astronaut {
 		this.hungerMax=100;
 		this.airRate=3;
 		this.waterRate=2;
-		
+		changeData = new HistoricalData(this);
 		Global.DebugMSG(5, "\nAstronaut: "+name+" has been created with default stats");
 	}
 	
@@ -45,7 +46,7 @@ public class Astronaut {
 		if (getAir()>getAirMax()) setAir(getAirMax());
 		if (getWater()>getWaterMax()) setWater(getWaterMax());
 		if (getFood()>getFoodMax()) setFood(getFoodMax());
-		
+		changeData.astroAdds(air, water, food, hunger);
 		
 	}
 	
@@ -64,10 +65,10 @@ public class Astronaut {
 	public String getStatusString()
 	{
 		String str,str1,str2,str3,str4;
-		str1 = "\nStatus of: "+getName()+"\n Air: "+getAir()+"/"+getAirMax();
-		str2 = "\n Water: "+getWater()+"/"+getWaterMax();
-		str3 = "\n Food: "+getFood()+"/"+getFoodMax();
-		str4 = "\n Hunger: "+getHunger()+"/"+getHungerMax();
+		str1 = "\nStatus of: "+getName()+"\n Air: "+getAir()+"/"+getAirMax() +" ("+changeData.getAirChange()+")";
+		str2 = "\n Water: "+getWater()+"/"+getWaterMax() +" ("+changeData.getWaterChange()+")";
+		str3 = "\n Food: "+getFood()+"/"+getFoodMax() +" ("+changeData.getFoodChange()+")";
+		str4 = "\n Hunger: "+getHunger()+"/"+getHungerMax() +" ("+changeData.getHungerChange()+")";
 		str=str1+str2+str3+str4;
 		return str;
 	}
@@ -185,6 +186,12 @@ public class Astronaut {
 	}
 	public void setChoice(Choice choice) {
 		this.choice = choice;
+	}
+	public HistoricalData getChangeData() {
+		return changeData;
+	}
+	public void setChangeData(HistoricalData changeData) {
+		this.changeData = changeData;
 	}
 
 

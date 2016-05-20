@@ -1,6 +1,5 @@
 package Building;
 
-import java.util.ArrayList;
 import Astronaut.Astronaut;
 import Items.*;
 import Main.Global;
@@ -34,6 +33,7 @@ public class MainBase {
 		energyMax=5000;
 		items = new ItemOps(astro,this);
 		grid = new BuildGrid(astro,this,Global.getBasesize());
+		astro.getChangeData().baseInit(this);
 	}
 	
 	public Boolean timePulse() 
@@ -59,16 +59,18 @@ public class MainBase {
 		if (getHydrogen()<=0) setHydrogen(0);
 		if (getEnergy()<=0) setEnergy(0);
 		
+		astro.getChangeData().baseAdds(alloy, carbon, hydrogen, energy);
+		
 		return true;
 	}
 	
 	public String getStatusString()
 	{
 		String str,str1,str2,str3,str4;
-		str1 = "\nStatus of: "+getName()+"\n Alloy: "+getAlloy()+"/"+getAlloyMax();
-		str2 = "\n Carbon: "+getCarbon()+"/"+getCarbonMax();
-		str3 = "\n Hydrogen: "+getHydrogen()+"/"+getHydrogenMax();
-		str4 = "\n Energy: "+getEnergy()+"/"+getEnergyMax();
+		str1 = "\nStatus of: "+getName()+"\n Alloy: "+getAlloy()+"/"+getAlloyMax() +" ("+astro.getChangeData().getAlloyChange()+")";
+		str2 = "\n Carbon: "+getCarbon()+"/"+getCarbonMax() +" ("+astro.getChangeData().getCarbonChange()+")";
+		str3 = "\n Hydrogen: "+getHydrogen()+"/"+getHydrogenMax() +" ("+astro.getChangeData().getHydrogenChange()+")";
+		str4 = "\n Energy: "+getEnergy()+"/"+getEnergyMax() +" ("+astro.getChangeData().getEnergyChange()+")";
 		str=str1+str2+str3+str4;
 		return str;
 	}
@@ -106,6 +108,26 @@ public class MainBase {
 	{
 		
 		return true;
+	}
+	
+	public Boolean isOwned(String name)
+	{
+		for (Item i:items.getOwnedItems())
+		{
+			if (i.getName()==name)
+				return true;
+		}
+		for (Building[] i:grid.getBuildings())
+		{
+			for(Building j:i)
+			{
+				if (j==null)
+					continue;
+				if (j.getName()==name)
+					return true;
+			}
+		}
+		return false;
 	}
 	
 	public int getAlloy() {

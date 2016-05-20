@@ -120,13 +120,16 @@ public class Choice {
 		if (act1==null && act2==null)
 		{
 			setActions(new ActionSynthesize(astro,base));
-			setActions(new ActionWait(astro));
+			if (base.isOwned("Fabricator"))
+				setActions(new ActionBuild(astro,base));
+			else
+				setActions(new ActionWait(astro));
 		}
 		//One Action Still Empty
 		if (act1==null || act2==null)
 		{
 			setActions(new ActionAddAir(astro));
-			setActions(new ActionBuild(astro,base));
+			setActions(new ActionWait(astro));
 		}
 	}
 }

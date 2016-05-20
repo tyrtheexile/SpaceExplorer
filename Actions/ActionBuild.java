@@ -2,6 +2,7 @@ package Actions;
 
 import Astronaut.Astronaut;
 import Building.*;
+import Main.Global;
 
 public class ActionBuild extends Action {
 	
@@ -18,10 +19,21 @@ public class ActionBuild extends Action {
 
 	@Override
 	public void doAction() {
+		
+		if (!base.isOwned("Fabricator"))
+		{
+			Global.TextDisp("You don't have a Fabricator!\nHow did you get here?");
+		}
+		
 		grid.drawBaseMap();
 		
-		grid.constructBuilding(new Corridor(astro,base), base.getGrid().getBuilding(6,6), "N");
-
+		Boolean success=false;
+		do{
+			success=grid.constructBuilding(new Corridor(astro,base), base.getGrid().getBuilding(6,6), "N");
+		} while (success==false);
+		grid.drawBaseMap();
+		
+		
 	}
 
 }

@@ -16,6 +16,10 @@ public class ItemOps {
 		this.astro=astro;
 		this.base=base;
 		freeItems = InitItemArray.StarterList(astro,base);
+		if (Global.getTestmode()==2)
+		{
+			ownedItems.add(new Fabricator(astro,base));
+		}
 	}
 	
 	public void moveItem2Owned(Item item)

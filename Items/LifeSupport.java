@@ -58,7 +58,9 @@ public class LifeSupport extends Item {
 
 	@Override
 	public int aquisitionModifier() {
-		base.getItems().addFreeItem(new CargoManifest(astro,base));
+		base.getItems().addFreeItem(new CookTop(astro,base));
+		base.getItems().addFreeItem(new Rebreather(astro,base));
+		base.getItems().addFreeItem(new WaterTank(astro,base));
 		return 0;
 	}
 

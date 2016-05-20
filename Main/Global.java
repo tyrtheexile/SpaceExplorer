@@ -13,6 +13,11 @@ public class Global {
 	private static boolean immortal=false;
 	private static int basesize=20;
 	
+	//Testmode is used to implement different starting setupds
+	//Testmode 1-default start
+	//Testmode 2-Fabricator in inventory
+	private static int testmode=1;
+	
 	public static void set_Debug(int i) {debug=i;}
 	public static int get_Debug() {return debug;}
 	
@@ -39,5 +44,11 @@ public class Global {
 	}
 	public static void setBasesize(int basesize) {
 		Global.basesize = basesize;
+	}
+	public static int getTestmode() {
+		return testmode;
+	}
+	public static void setTestmode(int testmode) {
+		Global.testmode = testmode;
 	}
 }
