@@ -21,7 +21,7 @@ public class ActionBuild extends Action {
 		grid.drawBaseMap();
 		
 		grid.constructBuilding(new Corridor(astro,base), base.getGrid().getBuilding(6,6), "N");
-
+		grid.constructBuilding(new Corridor(astro,base), base.getGrid().getBuilding(6,5), "N");
 	}
 
 }

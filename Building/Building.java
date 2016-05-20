@@ -50,9 +50,9 @@ public abstract class Building {
 	public Boolean setPosition(int xPos,int yPos)
 	{
 		
-		if (base.getGrid().getBuildings()[xPos][yPos]==null)
+		if (base.getGrid().getBuildings()[yPos][xPos]==null)
 		{
-			base.getGrid().getBuildings()[xPos][yPos]=this;
+			base.getGrid().getBuildings()[yPos][xPos]=this;
 			this.xPos=xPos;
 			this.yPos=yPos;
 			return true;

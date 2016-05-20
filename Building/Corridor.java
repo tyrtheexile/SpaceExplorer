@@ -1,6 +1,7 @@
 package Building;
 
 import Astronaut.Astronaut;
+import Main.Global;
 
 public class Corridor extends Building {
 
@@ -16,6 +17,7 @@ public class Corridor extends Building {
 	@Override
 	public int cycleModifier() {
 		base.setEnergy(base.getEnergy()-1);
+		Global.DebugMSG(6, "Corridor takes 1 Energy");
 		return 0;
 	}
 

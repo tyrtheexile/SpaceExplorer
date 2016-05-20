@@ -40,8 +40,10 @@ public class BuildGrid {
 			if(side=="E"||side=="e"){xPos=oldX+1; yPos=oldY;}
 			if(side=="W"||side=="w"){xPos=oldX-1; yPos=oldY;}
 			
-			newBuilding.setPosition(xPos, yPos);
-			Global.DebugMSG(3, "Building: "+newBuilding.getName()+" constructed, at:"+newBuilding.getPosition());
+			if(newBuilding.setPosition(xPos, yPos))
+				Global.DebugMSG(3, "Building: "+newBuilding.getName()+" constructed, at:"+newBuilding.getPosition());
+			else
+				return false;
 			return true;
 		} else
 			return false;
@@ -117,8 +119,8 @@ public class BuildGrid {
 
 	public Building getBuilding(int x,int y)
 	{
-		if (buildings[x-1][y-1]!=null)
-			return buildings[x-1][y-1];
+		if (buildings[y-1][x-1]!=null)
+			return buildings[y-1][x-1];
 		else
 			return null;
 	}
