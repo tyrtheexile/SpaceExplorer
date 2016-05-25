@@ -127,8 +127,8 @@ public class BuildGrid {
 
 	public Building getBuilding(int x,int y)
 	{
-		if (buildings[y-1][x-1]!=null)
-			return buildings[y-1][x-1];
+		if (buildings[y][x]!=null)
+			return buildings[y][x];
 		else
 			return null;
 	}
