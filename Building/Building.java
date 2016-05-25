@@ -75,10 +75,10 @@ public abstract class Building {
 	//Used during construction before building is placed to see if it has a connection in the right zone
 	public Boolean oppositeConnectionAvaliable(String oppositeSide)
 	{
-		if (oppositeSide=="N" && this.SConnExists==true) {return true;}
-		if (oppositeSide=="S" && this.NConnExists==true) {return true;}
-		if (oppositeSide=="E" && this.WConnExists==true) {return true;}
-		if (oppositeSide=="W" && this.EConnExists==true) {return true;}
+		if (oppositeSide.equals("N") && this.SConnExists==true) {return true;}
+		if (oppositeSide.equals("S") && this.NConnExists==true) {return true;}
+		if (oppositeSide.equals("E") && this.WConnExists==true) {return true;}
+		if (oppositeSide.equals("W") && this.EConnExists==true) {return true;}
 		return false;
 	}
 	
@@ -90,10 +90,10 @@ public abstract class Building {
 		int estSide=base.getGrid().getSize();
 		int wstSide=0;
 		//Global.TextDisp(this.getPosition()[1]+"------------------------------------");
-		if (dir=="N" && NConnExists==true && NConnection==null && this.getPosition()[1]>topSide) {return true;}
-		if (dir=="S" && SConnExists==true && SConnection==null && this.getPosition()[1]<botSide) {return true;}
-		if (dir=="E" && EConnExists==true && EConnection==null && this.getPosition()[0]<estSide) {return true;}
-		if (dir=="W" && WConnExists==true && WConnection==null && this.getPosition()[0]>wstSide) {return true;}
+		if (dir.equals("N") && NConnExists==true && NConnection==null && this.getPosition()[1]>topSide) {return true;}
+		if (dir.equals("S") && SConnExists==true && SConnection==null && this.getPosition()[1]<botSide) {return true;}
+		if (dir.equals("E") && EConnExists==true && EConnection==null && this.getPosition()[0]<estSide) {return true;}
+		if (dir.equals("W") && WConnExists==true && WConnection==null && this.getPosition()[0]>wstSide) {return true;}
 		return false;
 	}
 	

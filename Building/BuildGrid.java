@@ -1,5 +1,7 @@
 package Building;
 
+import java.util.ArrayList;
+
 import Astronaut.Astronaut;
 import Main.Global;
 
@@ -8,6 +10,7 @@ public class BuildGrid {
 	private MainBase base;
 	private int size=25;
 	private Building[][] buildings;
+	private ArrayList<Building>	freeBuildings = new ArrayList<Building>();
 	
 	public BuildGrid(Astronaut astro, MainBase base,int size) {
 		this.astro=astro;
@@ -15,6 +18,7 @@ public class BuildGrid {
 		this.size=size;
 		buildings = new Building[size][size];
 		placeBaseHub();
+		freeBuildings.add(new Corridor(astro,base));
 	}
 	
 	public Boolean constructBuilding(Building newBuilding, Building oldBuilding, String side)
@@ -27,6 +31,7 @@ public class BuildGrid {
 		if(!newBuilding.oppositeConnectionAvaliable(side))
 		{
 			Global.DebugMSG(3, "No Connection on the side for: "+newBuilding.getName());
+			return false;
 		}
 		if(base.payCost(newBuilding.getAlloyCost(), newBuilding.getCarbonCost(), newBuilding.getHydrogenCost(), newBuilding.getEnergyCost()))
 		{
@@ -35,10 +40,10 @@ public class BuildGrid {
 			int xPos=0;
 			int yPos=0;
 			
-			if(side=="N"||side=="n"){xPos=oldX; yPos=oldY-1;}
-			if(side=="S"||side=="s"){xPos=oldX; yPos=oldY+1;}
-			if(side=="E"||side=="e"){xPos=oldX+1; yPos=oldY;}
-			if(side=="W"||side=="w"){xPos=oldX-1; yPos=oldY;}
+			if(side.equals("N")||side.equals("n")){xPos=oldX; yPos=oldY-1;}
+			if(side.equals("S")||side.equals("s")){xPos=oldX; yPos=oldY+1;}
+			if(side.equals("E")||side.equals("e")){xPos=oldX+1; yPos=oldY;}
+			if(side.equals("W")||side.equals("w")){xPos=oldX-1; yPos=oldY;}
 			
 			if(newBuilding.setPosition(xPos, yPos))
 				Global.DebugMSG(3, "Building: "+newBuilding.getName()+" constructed, at:"+newBuilding.getPosition());
@@ -127,5 +132,26 @@ public class BuildGrid {
 	
 	public Building[][] getBuildings() {
 		return buildings;
+	}
+
+	public ArrayList<Building> getFreeBuildings() {
+		return freeBuildings;
+	}
+
+	public void add2FreeBuildings(Building freeBuilding) {
+		Boolean flag=false;
+		for (Building i:freeBuildings)
+		{
+			if (i.getName()!=freeBuilding.getName()){
+				continue;
+			}else {
+				Global.DebugMSG(6, "freeBuildings already contains" +freeBuilding.getName());
+				flag=true;
+			}
+		}
+		if (flag==false)
+		{
+			freeBuildings.add(freeBuilding);
+		}
 	}
 }

@@ -1,7 +1,7 @@
 package Items;
 
 import Astronaut.Astronaut;
-import Building.MainBase;
+import Building.*;
 
 public class Fabricator extends Item {
 
@@ -22,7 +22,7 @@ public class Fabricator extends Item {
 
 	@Override
 	public int aquisitionModifier() {
-		// TODO Auto-generated method stub
+		base.getGrid().add2FreeBuildings(new Corridor(astro,base));
 		return 0;
 	}
 

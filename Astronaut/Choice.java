@@ -31,6 +31,14 @@ public class Choice {
 		return choicenum;
 	}
 	
+	public static char getCharInput()
+	{
+		Global.TextDisp("\nWhat is your choice?: ");
+		char choicenum=inputStream.next().charAt(0);
+
+		return choicenum;
+	}
+	
 	//This is the Main Method of Choice
 	//It uses inter logic in choiceLogic() to make two actions and do the one selected Returns  Wait time
 	public int giveChoice()
