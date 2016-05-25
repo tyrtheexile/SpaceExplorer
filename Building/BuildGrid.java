@@ -46,7 +46,10 @@ public class BuildGrid {
 			if(side.equals("W")||side.equals("w")){xPos=oldX-1; yPos=oldY;}
 			
 			if(newBuilding.setPosition(xPos, yPos))
+			{
+				base.getGrid().getBuildings()[yPos][xPos]=newBuilding;
 				Global.DebugMSG(3, "Building: "+newBuilding.getName()+" constructed, at:"+newBuilding.getPosition());
+			}
 			else
 				return false;
 			return true;

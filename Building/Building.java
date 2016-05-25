@@ -17,7 +17,7 @@ import Main.Global;
  */
 
 
-public abstract class Building {
+public abstract class Building implements Cloneable {
 	
 	protected Astronaut astro;
 	protected MainBase base;
@@ -101,6 +101,14 @@ public abstract class Building {
 	{
 		int[] tmp={xPos,yPos};
 		return tmp;
+	}
+	
+	public Object clone(){  
+	    try{  
+	        return super.clone();  
+	    }catch(Exception e){ 
+	        return null; 
+	    }
 	}
 	
 	public abstract int cycleModifier();

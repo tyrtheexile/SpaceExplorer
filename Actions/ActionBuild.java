@@ -122,7 +122,10 @@ public class ActionBuild extends Action {
 				continue;
 			}
 			//Buys the Item, if It can't be afforded repeats the loop
-			if (grid.constructBuilding(buyableBuildings.get((choice-1)), base.getGrid().getBuilding(row,col),side)==true)
+			Building build = (Building) buyableBuildings.get((choice-1)).clone();
+			Global.DebugMSG(3, "Building Cloned: " +build.getName() +"\noldBuilding Location: "+base.getGrid().getBuilding(row,col).getPosition()[0]+","+base.getGrid().getBuilding(row,col).getPosition()[1]);
+			Global.DebugMSG(3, "Location inputed: "+row+","+col);
+			if (grid.constructBuilding(build, base.getGrid().getBuilding(row,col),side)==true)
 				buy = true;
 			else
 				Global.TextDisp("\nCannot Affor that Item");			
