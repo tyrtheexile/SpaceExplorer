@@ -60,7 +60,8 @@ public class LifeSupport extends Item {
 	public int aquisitionModifier() {
 		base.getItems().addFreeItem(new CookTop(astro,base));
 		base.getItems().addFreeItem(new Rebreather(astro,base));
-		base.getItems().addFreeItem(new WaterTank(astro,base));
+		//base.getItems().addFreeItem(new WaterTank(astro,base));
+		base.dualRequirement("PickAxe", new WaterTank(astro,base));
 		return 0;
 	}
 

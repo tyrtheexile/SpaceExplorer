@@ -128,7 +128,7 @@ public class ActionBuild extends Action {
 			if (grid.constructBuilding(build, base.getGrid().getBuilding(col,row),side)==true)
 				buy = true;
 			else
-				Global.TextDisp("\nCannot Affor that Item");			
+				Global.TextDisp("\nCannot Afford that Item");			
 		} while (buy==false);
 
 		return true;

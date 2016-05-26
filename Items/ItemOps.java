@@ -111,6 +111,19 @@ public class ItemOps {
 		return false;
 	}
 	
+	public Boolean ownItem(String name)
+	{
+		for (Item i:ownedItems)
+		{
+			if (i.getName()!=name){
+				continue;
+			}else {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void removeFreeItemByName(String name)
 	{
 		removeFreeItem(findFreeItemByName(name));

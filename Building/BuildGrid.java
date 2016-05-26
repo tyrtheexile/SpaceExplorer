@@ -157,4 +157,21 @@ public class BuildGrid {
 			freeBuildings.add(freeBuilding);
 		}
 	}
+	
+	public Boolean ownBuilding(String name)
+	{
+		for(Building[] i:buildings)
+		{
+			for(Building j:i)
+			{
+				if (j==null)
+					continue;
+				if (j.getName()!=name)
+					continue;
+				else
+					return true;
+			}
+		}
+		return false;
+	}
 }

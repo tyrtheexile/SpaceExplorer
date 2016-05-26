@@ -28,6 +28,8 @@ public class PickAxe extends Item {
 	@Override
 	public int aquisitionModifier() {
 		Global.DebugMSG(5, "\nPickAxe Bought");
+		//Testing only
+		base.dualRequirement("LifeSupport", new WaterTank(astro,base));
 		return 0;
 	}
 
