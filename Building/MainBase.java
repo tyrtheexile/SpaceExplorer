@@ -132,13 +132,13 @@ public class MainBase {
 	
 	public void dualRequirement(String name, Item item)
 	{
-		if(items.ownItem(name)==true || grid.ownBuilding(name)==true)
+		if(items.ownItem(name)!=true || grid.ownBuilding(name)==true)
 			this.getItems().addFreeItem(item);
 	}
 	
 	public void dualRequirement(String name, Building build)
 	{
-		if(items.ownItem(name)==true || grid.ownBuilding(name)==true)
+		if(items.ownItem(name)!=true || grid.ownBuilding(name)==true)
 			grid.add2FreeBuildings(build);
 	}
 	
