@@ -18,18 +18,18 @@ public class PickAxe extends Item {
 		if (astro.payCost(0, 0, 2))
 		{
 			base.setAlloy(base.getAlloy()+5);
-			Global.TextDisp("Pickaxe Mining is Hard Work - Lose 2 Food - Gain 5 Alloy");
+			Global.DebugMSG(2,"Pickaxe Mining is Hard Work - Lose 2 Food - Gain 5 Alloy");
 		}
 		else
-			Global.TextDisp("Can't Afford to Pickaxe this Turn");
+			Global.DebugMSG(2,"Can't Afford to Pickaxe this Turn");
 		return 0;
 	}
 
 	@Override
 	public int aquisitionModifier() {
-		Global.DebugMSG(5, "\nPickAxe Bought");
-		//Testing only
-		base.dualRequirement("LifeSupport", new WaterTank(astro,base));
+		Global.DebugMSG(2, "\nPickAxe Bought");
+		base.getItems().addFreeItem(new CarbonWash(astro,base));
+		base.getItems().addFreeItem(new H2ODecoupler(astro,base));
 		return 0;
 	}
 
