@@ -16,6 +16,7 @@ public class Global {
 	//Testmode is used to implement different starting setupds
 	//Testmode 1-default start
 	//Testmode 2-Fabricator in inventory
+	//Testmode 3-High Resource start
 	private static int testmode=1;
 	
 	public static void set_Debug(int i) {debug=i;}
@@ -33,7 +34,7 @@ public class Global {
 	}
 	public static void TextDisp(String str) 
 	{
-		if (debug==1 || debug==6)
+		if (debug==1 || debug==2|| debug==6)
 			System.out.println("\n"+str);
 	}
 	

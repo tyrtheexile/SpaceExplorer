@@ -126,6 +126,8 @@ public class ItemOps {
 	
 	public void removeFreeItemByName(String name)
 	{
+		Global.DebugMSG(6, "Removing (passed) "+name+" at index "+findFreeItemByName(name)+" from array: ");
+		Global.DebugMSG(6, ""+freeItems);
 		removeFreeItem(findFreeItemByName(name));
 	}
 	

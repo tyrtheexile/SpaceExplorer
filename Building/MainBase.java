@@ -31,6 +31,17 @@ public class MainBase {
 		carbonMax=500;
 		hydrogenMax=500;
 		energyMax=5000;
+		if (Global.getTestmode()==3)
+		{
+			alloy=20000;
+			carbon=5000;
+			hydrogen=5000;
+			energy=100000;
+			alloyMax=50000;
+			carbonMax=50000;
+			hydrogenMax=50000;
+			energyMax=500000;
+		}
 		items = new ItemOps(astro,this);
 		grid = new BuildGrid(astro,this,Global.getBasesize());
 		astro.getChangeData().baseInit(this);
